@@ -11,12 +11,12 @@ function SummarizationApp() {
 
   const handleSubmit = async () => {
     try {
-      // Make a POST request to your backend endpoint with the input text
-      const response = await axios.post('generate', {
-        text: inputText,
+      const response = await axios.get('/summarized', {
+        params: {
+          text: inputText,
+        },
       });
-      // Set the summarized text in the state
-      setSummarizedText(response.data.summarizedText);
+      setSummarizedText(response.data); // Accessing the entire response data
     } catch (error) {
       console.error('Error:', error);
     }

@@ -11,12 +11,14 @@ function SummarizationApp() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.get('/summarized', {
+      const response = await axios.get('http://localhost:8080/summarized', {
         params: {
           text: inputText,
         },
       });
-      setSummarizedText(response.data); // Accessing the entire response data
+      const summarizedText = response.data.summarizedText;
+
+      setSummarizedText(response.data); 
     } catch (error) {
       console.error('Error:', error);
     }

@@ -1,0 +1,12 @@
+div {
+    width: 300px; /* Adjust width as needed */
+    margin: 0 auto; /* Center justify */
+  }
+
+  .container {
+    display: flex;
+    justify-content: center; /* Center justify horizontally */
+    align-items: center; /* Center vertically */
+  }
+
+  

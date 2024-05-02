@@ -1,4 +1,5 @@
 // AuthGoogleSignUp.jsx
+// AuthGoogleSignUp.jsx
 import React, { useEffect } from "react";
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
@@ -8,7 +9,21 @@ import 'firebase/compat/auth';
 const AuthGoogleSignUp = ({ auth }) => {
     useEffect(() => {
         const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(auth);
+        
         ui.start('.firebase-auth-container', {
+            callbacks: {
+                signInSuccessWithAuthResult: (authResult) => {
+                    if (authResult.additionalUserInfo.isNewUser) {
+                        // New user signed up, continue with sign-up
+                        return true;
+                    } else {
+                        // Existing user signed in, show alert and redirect to home page
+                        alert('User already exists');
+                        window.location.href = '/summarized';
+                        return false; // Prevent sign-up
+                    }
+                }
+            },
             signInOptions: [
                 {
                     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -20,9 +35,7 @@ const AuthGoogleSignUp = ({ auth }) => {
     }, [auth]);
 
     return (
-        <>
-            <div className='firebase-auth-container'></div>
-        </>
+        <div className='firebase-auth-container'></div>
     );
 }
 

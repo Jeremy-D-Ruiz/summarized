@@ -7,7 +7,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import AuthGoogle from '../src/componets/AuthGoogle';
+
 
 function Nav() {
   const isAuthenticated = false; 

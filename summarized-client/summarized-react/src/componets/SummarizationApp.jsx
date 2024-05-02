@@ -64,13 +64,13 @@ function SummarizationApp() {
           onChange={handleInputChange}
         />
 
-          <select >
+          {/* <select >
           <option value="">Select Summarization Type</option>
             <option value="top3">List Top 3 Concepts</option>
             <option value="top5">List Top 5 Concepts</option>
             <option value="explainLikeIm5">Explain Like I'm 5</option>
             <option value="nextSteps">What Next?</option>
-          </select>
+          </select> */}
 
           
        

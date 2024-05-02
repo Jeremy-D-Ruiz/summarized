@@ -5,7 +5,6 @@ import AuthGoogle from './componets/AuthGoogle';
 import firebase from 'firebase/compat/app';
 import { onAuthStateChanged } from 'firebase/auth';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Authenticated from './componets/views/Authenticated';
 
 function App() {
   const firebaseConfig = {
@@ -30,25 +29,24 @@ function App() {
       }
     });
 
-    // No need for an unsubscribe function in this case
-
   }, []);
+
+  
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+        <Route path="/" element={<AuthGoogle auth={firebase.auth()} />} />
           {user && (
-            <Route path="/authenticated" element={<Authenticated user={user} />} />
+            <Route path="/summarized" element={<SummarizationApp />} />
           )}
         </Routes>
-        <AuthGoogle auth={firebase.auth()} />
+  
       </BrowserRouter>
-      <div>
+      {/* <div>
         <button onClick={()=>firebase.auth().signOut()}>Sign Out</button>
-        
-      </div>
-      <SummarizationApp />
+      </div> */}
     </div>
   );
 }

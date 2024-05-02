@@ -9,16 +9,15 @@ const AuthGoogle = (props) =>{
             signInOptions:[
                 {
                     provider:firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    requireDisplayName:false
+                    requireDisplayName:true
                 }
                 
             ],
-            signInSuccessUrl: '/authenticated'
+            signInSuccessUrl: '/summarized'
         });
     },[props.auth]);
     return (
         <>
-        <div>AuthGoogle</div>
         <div className='firebase-auth-container'></div>
         </>
     )

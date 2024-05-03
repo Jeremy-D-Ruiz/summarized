@@ -20,6 +20,9 @@ import java.util.Objects;
 @CrossOrigin(origins = "http://localhost:5173")
 public class ChatController {
 
+    //create put to add chats to database
+    //create put to add summarized chats to database
+
 
     private final OpenAiChatClient chatClient;
 

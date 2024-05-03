@@ -27,6 +27,11 @@ function SummarizationApp({user, auth}) {
         },
       });
       setSummarizedText(response.data); 
+      if(user){
+        await saveTextToDatabase(user.uid,inputText,response.data);
+      }
+
+
     } catch (error) {
       console.error('Error:', error);
     }
@@ -36,10 +41,14 @@ function SummarizationApp({user, auth}) {
     try {
       const response = await axios.get('http://localhost:8080/keyconcepts', {
         params: {
-          text: inputText,
+          originalText: inputText,
         },
       });
       setSummarizedText(response.data); 
+      if(user){
+        await saveTextToDatabase(user.uid,inputText,response.data);
+      }
+
     } catch (error) {
       console.error('Error:', error);
     }
@@ -49,13 +58,33 @@ function SummarizationApp({user, auth}) {
     try {
       const response = await axios.get('http://localhost:8080/likeimfive', {
         params: {
-          text: inputText,
+          originalText: inputText,
         },
       });
       setSummarizedText(response.data); 
+      if(user){
+        await saveTextToDatabase(user.uid,inputText,response.data);
+      }
+
     } catch (error) {
       console.error('Error:', error);
     }
+  };
+
+  const saveTextToDatabase = async(uid,originalText,summarizedText)=>{
+    try {
+      //save text to database
+      debugger;
+      await axios.post(`http://localhost:8080/addHistory?id=${uid}&originalText=${encodeURIComponent(originalText)}&summarizedText=${encodeURIComponent(summarizedText)}`);
+
+      console.log(uid);
+      console.log(originalText);
+      console.log(summarizedText);
+      debugger;
+    } catch (error) {
+      console.error('Error saving text to database:', error);
+    }
+
   };
 
   const handleSignOut = async () => {

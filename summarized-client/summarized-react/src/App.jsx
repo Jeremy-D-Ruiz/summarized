@@ -11,7 +11,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 function App() {
     const firebaseConfig = {
-      apiKey: "AIzaSyANq8MNKfiYDabb969KlVnPKDG3wt",
+      apiKey: "AIzaSyANq8MNKfiYDabb969KlVnPKDG3wtbuzIQ",
       authDomain: "summarized-a3ab8.firebaseapp.com",
       projectId: "summarized-a3ab8",
       storageBucket: "summarized-a3ab8.appspot.com",
@@ -50,8 +50,6 @@ function App() {
           <Route path="/summarized" element={<SummarizationApp user={user} auth={firebase.auth()} />} />
           <Route path="/auth-google-sign-in" element={<AuthGoogleSignIn auth={firebase.auth()} />} />
           <Route path="/auth-google-sign-up" element={<AuthGoogleSignUp auth={firebase.auth()} />} />
-
-
           </Routes>
         </BrowserRouter>
       </div>

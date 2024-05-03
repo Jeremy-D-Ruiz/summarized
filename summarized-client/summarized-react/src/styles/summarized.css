@@ -28,11 +28,11 @@ div {
   }
   
   .sign-out {
-    background-color: #ffc107;
+    background-color: #1a1a1a;
   }
   
   .sign-out:hover {
-    background-color: #d39e00;
+    background-color: #646cff;
   }
   .text-box-container {
     margin-top: 20px;

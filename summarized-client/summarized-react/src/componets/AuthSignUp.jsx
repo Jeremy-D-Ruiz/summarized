@@ -1,5 +1,4 @@
 // AuthGoogleSignUp.jsx
-// AuthGoogleSignUp.jsx
 import React, { useEffect } from "react";
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
@@ -14,7 +13,8 @@ const AuthGoogleSignUp = ({ auth }) => {
             callbacks: {
                 signInSuccessWithAuthResult: (authResult) => {
                     if (authResult.additionalUserInfo.isNewUser) {
-                        // New user, continue with sign-up
+                        const { displayName, uid } = authResult.user; 
+                        callAdd(displayName, uid); 
                         return true;
                     } else {
                         // Existing user signed in, show alert and redirect to home page
@@ -36,12 +36,41 @@ const AuthGoogleSignUp = ({ auth }) => {
                     requireDisplayName: true,
                     
                 }
-            ],
+            ] ,
             signInSuccessUrl: '/summarized'
         });
        
-
     }, [auth]);
+
+
+    function callAdd(displayName, uid) {
+        const userData = {
+            id: uid,
+            displayName: displayName
+        };
+    
+        fetch('http://localhost:8080/new-user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response => {
+            if (response.ok) {
+                // User data added successfully
+                console.log('User added successfully');
+            } else {
+                // Handle error from API call
+                throw new Error('Failed to add user on the server');
+            }
+        })
+        .catch(error => {
+            console.error('Error adding user:', error);
+            // Optionally handle the error here
+        });
+    }
+    
 
     return (
         <div className='firebase-auth-container'></div>

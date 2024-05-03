@@ -11,7 +11,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 function App() {
     const firebaseConfig = {
-      apiKey: "AIzaSyANq8MNKfiYDabb969KlVnPKDG3wtbuzIQ",
+      apiKey: "AIzaSyANq8MNKfiYDabb969KlVnPKDG3wt",
       authDomain: "summarized-a3ab8.firebaseapp.com",
       projectId: "summarized-a3ab8",
       storageBucket: "summarized-a3ab8.appspot.com",

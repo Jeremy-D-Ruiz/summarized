@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ChatHistoryController {
 
@@ -23,6 +25,20 @@ public class ChatHistoryController {
 
         return ResponseEntity.ok("Added to chat history");
     }
+
+    @GetMapping("/original-texts/{userId}")
+    public ResponseEntity<List<String>> getOriginalTexts(@PathVariable String userId) {
+        List<String> originalTexts = chatService.findOriginalTexts(userId);
+        return ResponseEntity.ok(originalTexts);
+    }
+
+    @GetMapping("/summarized-texts/{userId}")
+    public ResponseEntity<List<String>> getSummarizedTexts(@PathVariable String userId) {
+        List<String> summarizedTexts = chatService.findSummarizedTexts(userId);
+        return ResponseEntity.ok(summarizedTexts);
+    }
+
+
 
 
 }

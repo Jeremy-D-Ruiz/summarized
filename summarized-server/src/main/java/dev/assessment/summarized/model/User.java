@@ -16,6 +16,10 @@ public class User {
         this.summarizedTexts = summarizedTexts;
     }
 
+    public User() {
+
+    }
+
     public List<String> getOriginalTexts() {
         return originalTexts;
     }

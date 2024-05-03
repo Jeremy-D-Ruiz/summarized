@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import SummarizationApp from './componets/SummarizationApp';
-import Nav from '../views/NavBar.jsx';
-import AuthGoogle from './componets/AuthGoogle';
-import firebase from 'firebase/compat/app';
-import { onAuthStateChanged } from 'firebase/auth';
 import AuthGoogleSignIn from './componets/AuthSignIn.jsx';
 import AuthGoogleSignUp from './componets/AuthSignUp.jsx';
+
+import firebase from 'firebase/compat/app';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+
 
 function App() {
     const firebaseConfig = {
@@ -22,10 +23,11 @@ function App() {
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
     } else {
-        firebase.app(); // if already initialized, use that one
+        firebase.app();
     }
-
+  
     const [user, setUser] = useState(null);
+    
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(firebase.auth(), (user) => {
@@ -42,12 +44,12 @@ function App() {
     return (
       <div className="App">
         <BrowserRouter>
-          <Nav user={user} />
+        
           <Routes>
-            <Route path="/" element={<SummarizationApp />} />
-            <Route path="/summarized" element={<SummarizationApp />} />
-        <Route path="/auth-google-sign-in" element={<AuthGoogleSignIn auth={firebase.auth()} />} />
-        <Route path="/auth-google-sign-up" element={<AuthGoogleSignUp auth={firebase.auth()} />} />
+          <Route path="/" element={<SummarizationApp user={user} auth={firebase.auth()} />} />
+          <Route path="/summarized" element={<SummarizationApp user={user} auth={firebase.auth()} />} />
+          <Route path="/auth-google-sign-in" element={<AuthGoogleSignIn auth={firebase.auth()} />} />
+          <Route path="/auth-google-sign-up" element={<AuthGoogleSignUp auth={firebase.auth()} />} />
 
 
           </Routes>

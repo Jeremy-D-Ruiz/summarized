@@ -14,24 +14,33 @@ const AuthGoogleSignUp = ({ auth }) => {
             callbacks: {
                 signInSuccessWithAuthResult: (authResult) => {
                     if (authResult.additionalUserInfo.isNewUser) {
-                        // New user signed up, continue with sign-up
+                        // New user, continue with sign-up
                         return true;
                     } else {
                         // Existing user signed in, show alert and redirect to home page
-                        alert('User already exists');
-                        window.location.href = '/summarized';
-                        return false; // Prevent sign-up
+                        auth.signOut()
+                        .then(() => {
+                            alert('You are already a user. Please Sign In Instead');
+                            window.location.href = '/summarized';
+                        })
+                        .catch(error => {
+                            console.error('Error signing out:', error);
+                        });
+                        return false; 
                     }
                 }
             },
             signInOptions: [
-                {
+                {   
                     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    requireDisplayName: true
+                    requireDisplayName: true,
+                    
                 }
             ],
             signInSuccessUrl: '/summarized'
         });
+       
+
     }, [auth]);
 
     return (

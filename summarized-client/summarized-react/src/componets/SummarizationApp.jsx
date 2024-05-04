@@ -74,13 +74,8 @@ function SummarizationApp({user, auth}) {
   const saveTextToDatabase = async(uid,originalText,summarizedText)=>{
     try {
       //save text to database
-      debugger;
       await axios.post(`http://localhost:8080/addHistory?id=${uid}&originalText=${encodeURIComponent(originalText)}&summarizedText=${encodeURIComponent(summarizedText)}`);
 
-      console.log(uid);
-      console.log(originalText);
-      console.log(summarizedText);
-      debugger;
     } catch (error) {
       console.error('Error saving text to database:', error);
     }

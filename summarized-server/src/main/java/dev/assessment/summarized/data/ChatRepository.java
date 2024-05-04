@@ -1,12 +1,9 @@
 package dev.assessment.summarized.data;
 
 import dev.assessment.summarized.data.mappers.OriginalTextMapper;
-import dev.assessment.summarized.data.mappers.UserMapper;
-import dev.assessment.summarized.model.User;
-import org.springframework.boot.origin.Origin;
+import dev.assessment.summarized.data.mappers.SummarizedTextMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,17 +29,10 @@ public class ChatRepository {
 
     public List<String> findSummarizedTextsByUserId(String userId){
         List<String> summarizedTexts = new ArrayList<>();
-        String sql = "Select originalText FROM" +
-                " User_History where user_id =?;";
-        summarizedTexts = jdbcTemplate.query(sql, new OriginalTextMapper(), userId);
+        String sql = "Select summarizedText FROM " +
+                "User_History where user_id =?;";
+        summarizedTexts = jdbcTemplate.query(sql, new SummarizedTextMapper(), userId);
         return summarizedTexts;
     }
 
-
-//    public User findAllTexts(String id){
-//        String sql = "SELECT * From" +
-//                " User_History " +
-//                "WHERE user_id =? ;";
-//        return jdbcTemplate.query(sql, new UserMapper(), id);
-//    }
 }

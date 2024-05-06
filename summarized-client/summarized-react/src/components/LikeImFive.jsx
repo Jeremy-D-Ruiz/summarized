@@ -1,10 +1,10 @@
-
 import React from 'react';
+import '../styles/summarized.css';
 
 function LikeImFive({onClick}){
 
     return (
-        <button onClick={onClick}>Like Im Five</button>
+        <button className='button' onClick={onClick}>Like Im Five</button>
       );
 
 }

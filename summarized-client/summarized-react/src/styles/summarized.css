@@ -1,3 +1,18 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 div {
     width: auto; /* Adjust width as needed */
     margin: 0 auto; /* Center justify */
@@ -5,11 +20,9 @@ div {
 
   .container {
     display: flex;
-    justify-content: center; /* Center justify horizontally */
-    align-items: center;
+    justify-content: center; 
+    align-items: center; 
     border-radius: 10px;
-    
-  
   }
 
 
@@ -30,20 +43,13 @@ div {
     border-color: #646cff;
   }
   
-  .sign-out {
-    background-color: #1a1a1a;
-  }
-  
-  .sign-out:hover {
-    background-color: #646cff;
-  }
   .text-box-container {
     margin-top: 20px;
     margin-bottom: 20px; /* Add spacing below the text box */
   }
 
   .card {
-    width: 300px; /* Adjust width as needed */
+    width: 100%; /* Adjust width as needed */
     margin: 0 auto; /* Center horizontally */
     margin-bottom: 10px; /* Add spacing below the card */
     border-radius: 1px;

@@ -1,9 +1,10 @@
 import React from 'react';
+import '../styles/summarized.css';
 
 function KeyConcepts({onClick}){
 
     return (
-        <button onClick={onClick}>Get Key Concepts</button>
+        <button className='button' onClick={onClick}>Get Key Concepts</button>
       );
 
 }

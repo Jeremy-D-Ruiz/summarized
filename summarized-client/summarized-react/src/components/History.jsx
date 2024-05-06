@@ -50,10 +50,10 @@ function viewHistory({user}){
                                 <div className="card-body">
                                     <h5 className="card-title">Chat {index + 1} - {new Date(chat.date).toLocaleString()}</h5>
                                     <div className="d-flex justify-content-between align-items-center">
-                                        <Button onClick={() => toggleShowText(index)} className="btn btn-primary">
+                                        <Button onClick={() => toggleShowText(index)} className="button">
                                             {chat.showText ? "Hide" : "View"}
                                         </Button>
-                                        <Button onClick={() => handleDeleteChat(chat.date)} className="btn btn-danger">
+                                        <Button onClick={() => handleDeleteChat(chat.date)} className="button">
                                             Delete
                                         </Button>
                                     </div>

@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/summarized.css';
 
 function SummarizeButtonComponent({ onClick }) {
   return (
-    <button onClick={onClick}>Summarize</button>
+    <button className='button' onClick={onClick}>Summarize</button>
   );
 }
 

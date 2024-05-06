@@ -58,8 +58,6 @@ function viewHistory({user}){
         </>
         
     )
-
-
 };
 
 export default viewHistory;

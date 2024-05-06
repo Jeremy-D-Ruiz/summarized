@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import '../styles/summarized.css';
 
 function viewHistory({user}){
-    const [orginalChatHistory,setOriginalHistory] = useState([]);
+    const [originalChatHistory,setOriginalHistory] = useState([]);
     const [summarizedChatHistory,setSummarizedHistory] = useState([]);
 
     useEffect(() => {
@@ -34,28 +34,31 @@ function viewHistory({user}){
 
     return(
         <>
-        <div>
-        <h1>Original</h1>
-        <ul>
-            {orginalChatHistory.map((chat, index) => (
-                <li key={index}>{chat}</li>
-            ))}
-        </ul>
-
-        <h1>Summarized</h1>
-        <ul>
-            {summarizedChatHistory.map((chat, index) => (
-                <li key={index}>{chat}</li>
-            ))}
-            
-         </ul>
-         
-        <div className="button-container">
-         <Button as={Link} to='/summarized' className="button">Home</Button>
-         </div>
+        <div className="container">
+          <div className="row">
+            {originalChatHistory.length > 0 ? (
+              originalChatHistory.map((originalText, index) => (
+                <div className="col-lg-6 mb-3" key={index}>
+                  <div className="card border-primary">
+                    <div className="card-body">
+                      <h5 className="card-title">Chat {index + 1}</h5>
+                      <div className="d-flex">
+                        <p className="card-text mr-3"><strong>Original:</strong> {originalText}</p>
+                        <p className="card-text"><strong>Summarized:</strong> {summarizedChatHistory[index]}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <h1>No Summarization History </h1>
+            )}
+          </div>
         </div>
-        
-        </>
+        <div className="button-container">
+          <Button as={Link} to='/summarized' className="button">Home</Button>
+        </div>
+      </>
         
     )
 };

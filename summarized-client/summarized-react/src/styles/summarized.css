@@ -1,12 +1,15 @@
 div {
-    width: 300px; /* Adjust width as needed */
+    width: auto; /* Adjust width as needed */
     margin: 0 auto; /* Center justify */
   }
 
   .container {
     display: flex;
     justify-content: center; /* Center justify horizontally */
-    align-items: center; /* Center vertically */
+    align-items: center;
+    border-radius: 10px;
+    
+  
   }
 
 
@@ -42,7 +45,15 @@ div {
   .card {
     width: 300px; /* Adjust width as needed */
     margin: 0 auto; /* Center horizontally */
-    margin-bottom: 20px; /* Add spacing below the card */
-    border-color: #646cff;
+    margin-bottom: 10px; /* Add spacing below the card */
     border-radius: 1px;
+    border: 1px solid #646cff; 
+    padding-left: 10px;
+    padding-right: 10px; 
+
+}
+.summarized-text-box {
+  border: 1px solid #646cff; /* Border style */
+  border-radius: 4px; /* Border radius */
+  padding: 10px; /* Padding inside the box */
 }

@@ -130,13 +130,18 @@ function SummarizationApp({user, auth}) {
             <option value="nextSteps">What Next?</option>
           </select> */}
 
+          <div> 
           <SummarizeButtonComponent onClick={handleSummarize} />
           <KeyConcepts onClick={handleKeyConcepts} />
           <LikeImFive onClick={handleLikeImFive} />
+          </div>
+      
         </div>
 
         <h2>Summarized Text:</h2>
-        <p>{summarizedText}</p>
+        {summarizedText && (
+          <p className='summarized-text-box'>{summarizedText}</p>
+        )}
       </div>
     </div>
   );

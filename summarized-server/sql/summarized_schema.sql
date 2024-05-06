@@ -14,7 +14,7 @@ CREATE TABLE User_History (
     user_id VARCHAR(100),
 	originalText longtext,
      summarizedText longtext,
-    `timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 select * from User;

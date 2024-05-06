@@ -1,12 +1,7 @@
 package dev.assessment.summarized.data;
 
 import dev.assessment.summarized.model.User;
-
-import java.util.HashMap;
-
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 @Repository

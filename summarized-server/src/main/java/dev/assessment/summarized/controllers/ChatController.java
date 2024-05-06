@@ -1,20 +1,12 @@
 package dev.assessment.summarized.controllers;
 
 
-import org.apache.catalina.User;
-import org.springframework.ai.chat.ChatClient;
-import org.springframework.ai.chat.Generation;
-import org.springframework.ai.chat.messages.Message;
-import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.ai.openai.OpenAiChatClient;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")

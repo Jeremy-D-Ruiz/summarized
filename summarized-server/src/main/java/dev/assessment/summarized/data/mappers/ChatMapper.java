@@ -1,0 +1,24 @@
+package dev.assessment.summarized.data.mappers;
+
+import dev.assessment.summarized.model.Chat;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class ChatMapper implements RowMapper<Chat> {
+
+    @Override
+    public Chat mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+        Chat chat = new Chat();
+        chat.setOriginalText(resultSet.getString("originalText"));
+        chat.setSummarizedText(resultSet.getString("summarizedText"));
+        java.sql.Timestamp timestamp = resultSet.getTimestamp("date");
+
+        // Convert java.sql.Timestamp to LocalDateTime
+        if (timestamp != null) {
+            chat.setDate(timestamp.toLocalDateTime());
+        }
+        return chat;
+    }
+}

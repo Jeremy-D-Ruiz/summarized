@@ -6,34 +6,25 @@ public class User {
 
     String id;
     String displayName;
-    List<String> originalTexts;
-    List<String> summarizedTexts;
+    List<Chat> chats;
 
-    public User(String id, String displayName, List<String> originalTexts, List<String> summarizedTexts) {
+
+    public User(String id, String displayName, List<Chat> chats) {
         this.id = id;
         this.displayName = displayName;
-        this.originalTexts = originalTexts;
-        this.summarizedTexts = summarizedTexts;
+        this.chats=chats;
     }
 
     public User() {
 
     }
 
-    public List<String> getOriginalTexts() {
-        return originalTexts;
+    public List<Chat> getChats() {
+        return chats;
     }
 
-    public void setOriginalTexts(List<String> originalTexts) {
-        this.originalTexts = originalTexts;
-    }
-
-    public List<String> getSummarizedTexts() {
-        return summarizedTexts;
-    }
-
-    public void setSummarizedTexts(List<String> summarizedTexts) {
-        this.summarizedTexts = summarizedTexts;
+    public void setChats(List<Chat> chats) {
+        this.chats = chats;
     }
 
     public String getId() {

@@ -1,9 +1,8 @@
 package dev.assessment.summarized.controllers;
 
 
-import dev.assessment.summarized.model.User;
+import dev.assessment.summarized.model.Chat;
 import dev.assessment.summarized.service.ChatHistoryService;
-import dev.assessment.summarized.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,19 +25,17 @@ public class ChatHistoryController {
         return ResponseEntity.ok("Added to chat history");
     }
 
-    @GetMapping("/original-texts/{userId}")
-    public ResponseEntity<List<String>> getOriginalTexts(@PathVariable String userId) {
-        List<String> originalTexts = chatService.findOriginalTexts(userId);
-        return ResponseEntity.ok(originalTexts);
+    @GetMapping("/chats/{userId}")
+    public ResponseEntity<List<Chat>> getChats(@PathVariable String userId) {
+        List<Chat> chats = chatService.findChatsByUserId(userId);
+        return ResponseEntity.ok(chats);
     }
 
-    @GetMapping("/summarized-texts/{userId}")
-    public ResponseEntity<List<String>> getSummarizedTexts(@PathVariable String userId) {
-        List<String> summarizedTexts = chatService.findSummarizedTexts(userId);
-        return ResponseEntity.ok(summarizedTexts);
+    @DeleteMapping("/chats/{userId}/{date}")
+    public ResponseEntity<String> deleteChat(@PathVariable String userId, @PathVariable String date) {
+        chatService.deleteChat(userId, date);
+        return ResponseEntity.ok("Chat deleted successfully");
     }
-
-
 
 
 }

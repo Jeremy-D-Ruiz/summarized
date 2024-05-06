@@ -1,12 +1,12 @@
 package dev.assessment.summarized.data.mappers;
 
 import dev.assessment.summarized.data.ChatRepository;
+import dev.assessment.summarized.model.Chat;
 import dev.assessment.summarized.model.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,11 +18,8 @@ public class UserMapper implements RowMapper<User> {
         user.setId(resultSet.getString("user_id"));
         user.setDisplayName(resultSet.getString("displayName"));
 
-        List<String> originalTexts = chatRepository.findOriginalTextsByUserId(user.getId());
-        List<String> summarizedTexts = chatRepository.findSummarizedTextsByUserId(user.getId());
-
-        user.setOriginalTexts(originalTexts);
-        user.setSummarizedTexts(summarizedTexts);
+        List<Chat> allChats = chatRepository.findChatsByUserId(user.getId());
+        user.setChats(allChats);
 
         return user;
     }

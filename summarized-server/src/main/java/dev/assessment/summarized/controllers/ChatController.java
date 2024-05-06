@@ -59,7 +59,6 @@ public class ChatController {
 
     @GetMapping("/likeimfive")
     public String likeImFive(@RequestParam(value = "text", defaultValue = "No Text Given") String text) {
-
         String message = """
                 You are a summarization tool designed to simplify difficult text.
                 Your response should never be longer than the given text.

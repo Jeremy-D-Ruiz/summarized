@@ -30,34 +30,52 @@ function viewHistory({user}){
         }
     };
 
+    const toggleShowText = (index) => {
+        const updatedChats = [...chats];
+        updatedChats[index] = {
+            ...updatedChats[index],
+            showText: !updatedChats[index].showText
+        };
+        setChats(updatedChats);
+    };
+
     return (
         <>
-            <div className="container">
-                <div className="row">
-                    {chats.length > 0 ? (
-                        chats.map((chat, index) => (
-                            <div className="col-lg-6 mb-3" key={index}>
-                                <div className="card border-primary">
-                                    <div className="card-body">
-                                        <h5 className="card-title">Chat {index + 1} - {new Date(chat.date).toLocaleString()}</h5>
-                                        <div className="d-flex">
-                                            <p className="card-text mr-3"><strong>Original:</strong> {chat.originalText}</p>
-                                            <p className="card-text"><strong>Summarized:</strong> {chat.summarizedText}</p>
-                                        </div>
-                                        <Button onClick={() => handleDeleteChat(chat.date)} className="btn btn-danger">Delete</Button>
+        <div className="container">
+            <div className="row">
+                {chats.length > 0 ? (
+                    chats.map((chat, index) => (
+                        <div className="col-lg-6 mb-3" key={index}>
+                            <div className="card border-primary">
+                                <div className="card-body">
+                                    <h5 className="card-title">Chat {index + 1} - {new Date(chat.date).toLocaleString()}</h5>
+                                    <div className="d-flex justify-content-between align-items-center">
+                                        <Button onClick={() => toggleShowText(index)} className="btn btn-primary">
+                                            {chat.showText ? "Hide" : "View"}
+                                        </Button>
+                                        <Button onClick={() => handleDeleteChat(chat.date)} className="btn btn-danger">
+                                            Delete
+                                        </Button>
                                     </div>
+                                    {chat.showText && (
+                                        <>
+                                            <p className="card-text mt-3"><strong>Original:</strong> {chat.originalText}</p>
+                                            <p className="card-text"><strong>Summarized:</strong> {chat.summarizedText}</p>
+                                        </>
+                                    )}
                                 </div>
                             </div>
-                        ))
-                    ) : (
-                        <h1>No Summarization History</h1>
-                    )}
-                </div>
+                        </div>
+                    ))
+                ) : (
+                    <h1>No Summarization History</h1>
+                )}
             </div>
-            <div className="button-container">
-                <Button as={Link} to='/summarized' className="button">Home</Button>
-            </div>
-        </>
+        </div>
+        <div className="button-container">
+            <Button as={Link} to='/summarized' className="button">Home</Button>
+        </div>
+    </>
         
     )
 };

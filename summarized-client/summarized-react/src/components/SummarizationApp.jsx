@@ -41,7 +41,7 @@ function SummarizationApp({user, auth}) {
     try {
       const response = await axios.get('http://localhost:8080/keyconcepts', {
         params: {
-          originalText: inputText,
+          text: inputText,
         },
       });
       setSummarizedText(response.data); 
@@ -58,7 +58,7 @@ function SummarizationApp({user, auth}) {
     try {
       const response = await axios.get('http://localhost:8080/likeimfive', {
         params: {
-          originalText: inputText,
+          text: inputText,
         },
       });
       setSummarizedText(response.data); 

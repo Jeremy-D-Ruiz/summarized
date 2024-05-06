@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import SummarizationApp from './componets/SummarizationApp';
-import AuthGoogleSignIn from './componets/AuthSignIn.jsx';
-import AuthGoogleSignUp from './componets/AuthSignUp.jsx';
+import SummarizationApp from './components/SummarizationApp';
+import AuthGoogleSignIn from './components/AuthSignIn.jsx';
+import AuthGoogleSignUp from './components/AuthSignUp.jsx';
+import History from './components/History.jsx';
 
 import firebase from 'firebase/compat/app';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
@@ -50,6 +51,7 @@ function App() {
           <Route path="/summarized" element={<SummarizationApp user={user} auth={firebase.auth()} />} />
           <Route path="/auth-google-sign-in" element={<AuthGoogleSignIn auth={firebase.auth()} />} />
           <Route path="/auth-google-sign-up" element={<AuthGoogleSignUp auth={firebase.auth()} />} />
+          <Route path="/history" element={<History user={user} />} />
           </Routes>
         </BrowserRouter>
       </div>

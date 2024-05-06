@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import SummarizationApp from './componets/SummarizationApp';
-import AuthGoogleSignIn from './componets/AuthSignIn.jsx';
-import AuthGoogleSignUp from './componets/AuthSignUp.jsx';
-import History from './componets/History.jsx';
+import SummarizationApp from './components/SummarizationApp';
+import AuthGoogleSignIn from './components/AuthSignIn.jsx';
+import AuthGoogleSignUp from './components/AuthSignUp.jsx';
+import History from './components/History.jsx';
 
 import firebase from 'firebase/compat/app';
 import { onAuthStateChanged, signOut } from 'firebase/auth';

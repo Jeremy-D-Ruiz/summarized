@@ -9,7 +9,7 @@ import java.util.Map;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173", "chrome-extension://${CHROME_ID}"})
 public class ChatController {
 
     //create put to add chats to database

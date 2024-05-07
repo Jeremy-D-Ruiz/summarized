@@ -10,10 +10,10 @@ import { Button } from 'react-bootstrap';
 import { signOut } from 'firebase/auth';
 
 
-
 function SummarizationApp({user, auth}) {
   const [inputText, setInputText] = useState('');
   const [summarizedText, setSummarizedText] = useState('');
+
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
@@ -96,6 +96,7 @@ function SummarizationApp({user, auth}) {
   };
 
 
+
   return (
     <div>
       <div className='containter'>
@@ -142,6 +143,7 @@ function SummarizationApp({user, auth}) {
         {summarizedText && (
           <p className='summarized-text-box'>{summarizedText}</p>
         )}
+    
       </div>
     </div>
   );

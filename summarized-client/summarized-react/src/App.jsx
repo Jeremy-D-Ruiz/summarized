@@ -1,3 +1,4 @@
+import { REACT_APP_FIREBASE_API_KEY } from '../src/env.js';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -7,12 +8,12 @@ import AuthGoogleSignUp from './components/AuthSignUp.jsx';
 import History from './components/History.jsx';
 
 import firebase from 'firebase/compat/app';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged} from 'firebase/auth';
 
 
 function App() {
     const firebaseConfig = {
-      apiKey: "AIzaSyANq8MNKfiYDabb969KlVnPKDG3wtbuzIQ",
+      apiKey: REACT_APP_FIREBASE_API_KEY,
       authDomain: "summarized-a3ab8.firebaseapp.com",
       projectId: "summarized-a3ab8",
       storageBucket: "summarized-a3ab8.appspot.com",

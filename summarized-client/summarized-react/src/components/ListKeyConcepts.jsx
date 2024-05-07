@@ -19,6 +19,7 @@ function KeyConcepts({ inputText, user, saveTextToDatabase, setSummarizedText })
 
     } catch (error) {
       console.error('Error:', error);
+      alert('Invalid text. Please enter valid text. If this is a code snippet, please use the "Summarize Code" button.');
     }
   };
 

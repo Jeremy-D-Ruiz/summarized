@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios'; 
+
 import TextBoxComponent from './TextBox.jsx';
 import SummarizeButtonComponent from './SummarizeButton.jsx'; 
 import KeyConcepts from './ListKeyConcepts.jsx'; 
 import LikeImFive from './LikeImFive.jsx';
+import CodeSummarize from './CodeSummarize.jsx';
+
 import '../styles/summarized.css';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
@@ -78,7 +81,12 @@ function SummarizationApp({user, auth}) {
             
             <KeyConcepts inputText={inputText} user={user} 
             saveTextToDatabase={saveTextToDatabase} setSummarizedText={setSummarizedText} />
-          </div>
+          
+            
+          <CodeSummarize inputText={inputText} user={user} 
+            saveTextToDatabase={saveTextToDatabase} setSummarizedText={setSummarizedText} />
+         
+         </div>
         </div>
       </div>
       {summarizedText && (

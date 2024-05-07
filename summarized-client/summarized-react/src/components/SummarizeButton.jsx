@@ -15,6 +15,7 @@ function SummarizeButtonComponent({ inputText, user, saveTextToDatabase, setSumm
       }
     } catch (error) {
       console.error('Error:', error);
+      alert('Invalid text. Please enter valid text.');
     }
   };
 

@@ -11,11 +11,6 @@ import java.util.Map;
 @RestController
 @CrossOrigin(origins = {"http://localhost:5173", "chrome-extension://${CHROME_ID}"})
 public class ChatController {
-
-    //create put to add chats to database
-    //create put to add summarized chats to database
-
-
     private final OpenAiChatClient chatClient;
 
     public ChatController(OpenAiChatClient chatClient) {
@@ -69,6 +64,23 @@ public class ChatController {
 
         PromptTemplate promptTemplate = new PromptTemplate(message);
         Prompt prompt = promptTemplate.create(Map.of("text", text));
+
+        return chatClient.call(prompt).getResult().getOutput().getContent();
+    }
+
+    @PostMapping("/summarize-code")
+    public String getSummarizedCode(@RequestBody String code) {
+        // Construct prompt template
+        String message = """
+            You are a code summarization tool.
+            Please summarize the provided code snippet.
+            First tell the user what language the code is in, what tools,frameworks,or other technology the code
+            appears to be using. Then summarize what the code is doing. If no code is given respond with - "I am a code summary tool
+            please enter code to continue."
+            Code snippet: {code}
+            """;
+        PromptTemplate promptTemplate = new PromptTemplate(message);
+        Prompt prompt = promptTemplate.create(Map.of("code", code));
 
         return chatClient.call(prompt).getResult().getOutput().getContent();
     }

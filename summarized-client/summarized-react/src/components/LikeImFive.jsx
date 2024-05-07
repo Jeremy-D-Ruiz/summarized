@@ -1,10 +1,30 @@
 import React from 'react';
-import '../styles/summarized.css';
+import { Button } from 'react-bootstrap';
+import axios from 'axios';
 
-function LikeImFive({onClick}){
+function LikeImFive({ inputText, user, saveTextToDatabase, setSummarizedText }){
+
+  const handleLikeImFive = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/likeimfive', {
+        params: {
+          text: inputText,
+        },
+      });
+      setSummarizedText(response.data); 
+      if(user){
+        await saveTextToDatabase(user.uid,inputText,response.data);
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
     return (
-        <button className='button' onClick={onClick}>Like Im Five</button>
+      <Button onClick={handleLikeImFive} className="button">
+      Like Im Five
+    </Button>
       );
 
 }

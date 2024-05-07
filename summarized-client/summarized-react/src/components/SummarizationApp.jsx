@@ -19,58 +19,6 @@ function SummarizationApp({user, auth}) {
     setInputText(event.target.value);
   };
 
-  const handleSummarize = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/summarized', {
-        params: {
-          text: inputText,
-        },
-      });
-      setSummarizedText(response.data); 
-      if(user){
-        await saveTextToDatabase(user.uid,inputText,response.data);
-      }
-
-
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  const handleKeyConcepts = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/keyconcepts', {
-        params: {
-          text: inputText,
-        },
-      });
-      setSummarizedText(response.data); 
-      if(user){
-        await saveTextToDatabase(user.uid,inputText,response.data);
-      }
-
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  const handleLikeImFive = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/likeimfive', {
-        params: {
-          text: inputText,
-        },
-      });
-      setSummarizedText(response.data); 
-      if(user){
-        await saveTextToDatabase(user.uid,inputText,response.data);
-      }
-
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
   const saveTextToDatabase = async(uid,originalText,summarizedText)=>{
     try {
       //save text to database
@@ -121,9 +69,15 @@ function SummarizationApp({user, auth}) {
             onChange={handleInputChange}
           />
           <div className="action-buttons">
-            <SummarizeButtonComponent onClick={handleSummarize} />
-            <KeyConcepts onClick={handleKeyConcepts} />
-            <LikeImFive onClick={handleLikeImFive} />
+
+            <SummarizeButtonComponent inputText={inputText} user={user} 
+            saveTextToDatabase={saveTextToDatabase} setSummarizedText={setSummarizedText} />
+            
+            <LikeImFive inputText={inputText} user={user}
+            saveTextToDatabase={saveTextToDatabase} setSummarizedText={setSummarizedText} />
+            
+            <KeyConcepts inputText={inputText} user={user} 
+            saveTextToDatabase={saveTextToDatabase} setSummarizedText={setSummarizedText} />
           </div>
         </div>
       </div>

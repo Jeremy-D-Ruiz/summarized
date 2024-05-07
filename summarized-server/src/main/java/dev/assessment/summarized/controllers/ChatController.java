@@ -75,8 +75,8 @@ public class ChatController {
             You are a code summarization tool.
             Please summarize the provided code snippet.
             First tell the user what language the code is in, what tools,frameworks,or other technology the code
-            appears to be using. Then summarize what the code is doing. If no code is given respond with - "I am a code summary tool
-            please enter code to continue."
+            appears to be using. Then summarize what the code is doing.
+            If no code is given respond with "I am a code summary tool please enter code to continue."
             Code snippet: {code}
             """;
         PromptTemplate promptTemplate = new PromptTemplate(message);

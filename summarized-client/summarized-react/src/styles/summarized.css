@@ -14,15 +14,24 @@
 }
 
 div {
-    width: auto; /* Adjust width as needed */
-    margin: 0 auto; /* Center justify */
+    width: auto; 
+    margin: 0 auto; 
   }
 
   .container {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    border-radius: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .left-column {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .right-column {
+    flex: 1;
+    padding: 20px;
   }
 
 

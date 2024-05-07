@@ -98,10 +98,9 @@ function SummarizationApp({user, auth}) {
 
 
   return (
-    <div>
-      <div className='containter'>
+    <div className="container">
+      <div className="left-column">
         <h1>Summarized</h1>
-
         <div className="button-container">
           {!user && (
             <div>
@@ -116,35 +115,24 @@ function SummarizationApp({user, auth}) {
             </div>
           )}
         </div>
-
         <div className="text-box-container">
           <TextBoxComponent 
             value={inputText}
             onChange={handleInputChange}
           />
-
-                  {/* <select >
-          <option value="">Select Summarization Type</option>
-            <option value="top3">List Top 3 Concepts</option>
-            <option value="top5">List Top 5 Concepts</option>
-            <option value="explainLikeIm5">Explain Like I'm 5</option>
-            <option value="nextSteps">What Next?</option>
-          </select> */}
-
-          <div> 
-          <SummarizeButtonComponent onClick={handleSummarize} />
-          <KeyConcepts onClick={handleKeyConcepts} />
-          <LikeImFive onClick={handleLikeImFive} />
+          <div className="action-buttons">
+            <SummarizeButtonComponent onClick={handleSummarize} />
+            <KeyConcepts onClick={handleKeyConcepts} />
+            <LikeImFive onClick={handleLikeImFive} />
           </div>
-      
         </div>
-
-        <h2>Summarized Text:</h2>
-        {summarizedText && (
-          <p className='summarized-text-box'>{summarizedText}</p>
-        )}
-    
       </div>
+      {summarizedText && (
+        <div className="right-column">
+          <h2>Summarized Text:</h2>
+          <p className='summarized-text-box'>{summarizedText}</p>
+        </div>
+      )}
     </div>
   );
 }

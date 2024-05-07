@@ -41,6 +41,9 @@ function viewHistory({user}){
 
     return (
         <>
+        <div className="button-container">
+            <Button as={Link} to='/summarized' className="button">Home</Button>
+        </div>
         <div className="container">
             <div className="row">
                 {chats.length > 0 ? (
@@ -72,9 +75,7 @@ function viewHistory({user}){
                 )}
             </div>
         </div>
-        <div className="button-container">
-            <Button as={Link} to='/summarized' className="button">Home</Button>
-        </div>
+     
     </>
         
     )

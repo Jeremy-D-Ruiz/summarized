@@ -89,12 +89,14 @@ function SummarizationApp({user, auth}) {
          </div>
         </div>
       </div>
+
       {summarizedText && (
         <div className="right-column">
           <h2>Summarized Text:</h2>
           <p className='summarized-text-box'>{summarizedText}</p>
         </div>
       )}
+      
     </div>
   );
 }

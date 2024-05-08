@@ -49,17 +49,16 @@ function SummarizationApp({user, auth}) {
 
 
   return (
-    <div className="container">
-      <div className="left-column">
-        <h1>Summarized</h1>
+    <div className="container" style={{ display: 'flex' }}>
+      <div className="left-column" style={{ flex: summarizedText ? 1 : 'none', padding: '20px' }}>
+        <h1 style={{ backgroundColor: 'darkgray', padding: '10px', borderRadius: '5px' }}>Summarized</h1>
         <div className="button-container">
-          {!user && (
+          {!user ? (
             <div>
               <Button as={Link} to="/auth-google-sign-in" className="button">Sign In</Button>
               <Button as={Link} to="/auth-google-sign-up" className="button">Create Account</Button>
             </div>
-          )}
-          {user && (
+          ) : (
             <div>
               <Button as={Link} to="/history" className="button">View History</Button>
               <Button onClick={handleSignOut} className="button sign-out">Sign Out</Button>
@@ -67,36 +66,45 @@ function SummarizationApp({user, auth}) {
           )}
         </div>
         <div className="text-box-container">
-          <TextBoxComponent 
+          <TextBoxComponent
             value={inputText}
             onChange={handleInputChange}
           />
           <div className="action-buttons">
-
-            <SummarizeButtonComponent inputText={inputText} user={user} 
-            saveTextToDatabase={saveTextToDatabase} setSummarizedText={setSummarizedText} />
-            
-            <LikeImFive inputText={inputText} user={user}
-            saveTextToDatabase={saveTextToDatabase} setSummarizedText={setSummarizedText} />
-            
-            <KeyConcepts inputText={inputText} user={user} 
-            saveTextToDatabase={saveTextToDatabase} setSummarizedText={setSummarizedText} />
-          
-            
-          <CodeSummarize inputText={inputText} user={user} 
-            saveTextToDatabase={saveTextToDatabase} setSummarizedText={setSummarizedText} />
-         
-         </div>
+            <SummarizeButtonComponent
+              inputText={inputText}
+              user={user}
+              saveTextToDatabase={saveTextToDatabase}
+              setSummarizedText={setSummarizedText}
+            />
+            <LikeImFive
+              inputText={inputText}
+              user={user}
+              saveTextToDatabase={saveTextToDatabase}
+              setSummarizedText={setSummarizedText}
+            />
+            <KeyConcepts
+              inputText={inputText}
+              user={user}
+              saveTextToDatabase={saveTextToDatabase}
+              setSummarizedText={setSummarizedText}
+            />
+            <CodeSummarize
+              inputText={inputText}
+              user={user}
+              saveTextToDatabase={saveTextToDatabase}
+              setSummarizedText={setSummarizedText}
+            />
+          </div>
         </div>
       </div>
 
       {summarizedText && (
-        <div className="right-column">
-          <h2>Summarized Text:</h2>
-          <p className='summarized-text-box'>{summarizedText}</p>
+        <div className="right-column" style={{ flex: 1, padding: '20px' }}>
+          <h1 style={{ backgroundColor: 'darkgray', padding: '10px', borderRadius: '5px' }}>Summarized Text:</h1>
+          <p className="summarized-text-box">{summarizedText}</p>
         </div>
       )}
-      
     </div>
   );
 }

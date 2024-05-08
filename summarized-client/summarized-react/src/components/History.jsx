@@ -41,41 +41,39 @@ function viewHistory({user}){
 
     return (
         <>
-        <div className="button-container">
+        <div className="button-container" style={{ marginBottom: '20px' }}>
             <Button as={Link} to='/summarized' className="button">Home</Button>
         </div>
-        <div className="container">
-            <div className="row">
-                {chats.length > 0 ? (
-                    chats.map((chat, index) => (
-                        <div className="col-lg-6 mb-3" key={index}>
-                            <div className="card border-primary">
-                                <div className="card-body">
-                                    <h5 className="card-title">Chat {index + 1} - {new Date(chat.date).toLocaleString()}</h5>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <Button onClick={() => toggleShowText(index)} className="button">
-                                            {chat.showText ? "Hide" : "View"}
-                                        </Button>
-                                        <Button onClick={() => handleDeleteChat(chat.date)} className="button">
-                                            Delete
-                                        </Button>
-                                    </div>
-                                    {chat.showText && (
-                                        <>
-                                            <p className="card-text mt-3"><strong>Original:</strong> {chat.originalText}</p>
-                                            <p className="card-text"><strong>Summarized:</strong> {chat.summarizedText}</p>
-                                        </>
-                                    )}
+                <div className="row justify-content-start">
+            {chats.length > 0 ? (
+                chats.map((chat, index) => (
+                    <div className="col-lg-6 mb-3" key={index}>
+                        <div className="card border-primary ">
+                            <div className="card-body">
+                                <h5 className="card-title">Chat {index + 1} - {new Date(chat.date).toLocaleString()}</h5>
+                                <div className="d-flex justify-content-between align-items-left">
+                                    <Button onClick={() => toggleShowText(index)} className="button">
+                                        {chat.showText ? "Hide" : "View"}
+                                    </Button>
+                                    <Button onClick={() => handleDeleteChat(chat.date)} className="button">
+                                        Delete
+                                    </Button>
                                 </div>
+                                {chat.showText && (
+                                    <>
+                                        <p className="card-text mt-3"><strong>Original:</strong> {chat.originalText}</p>
+                                        <p className="card-text"><strong>Summarized:</strong> {chat.summarizedText}</p>
+                                    </>
+                                )}
                             </div>
                         </div>
-                    ))
-                ) : (
-                    <h1>No Summarization History</h1>
-                )}
-            </div>
+                    </div>
+                ))
+            ) : (
+                <h1>No Summarization History</h1>
+            )}
         </div>
-     
+            
     </>
         
     )

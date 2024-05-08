@@ -54,21 +54,22 @@ div {
   
   .text-box-container {
     margin-top: 20px;
-    margin-bottom: 20px; /* Add spacing below the text box */
+    margin-bottom: 20px; 
   }
 
   .card {
-    width: 100%; /* Adjust width as needed */
-    margin: 0 auto; /* Center horizontally */
-    margin-bottom: 10px; /* Add spacing below the card */
+    width: auto; 
+    margin: 0 auto; 
+    margin-bottom: 10px; 
     border-radius: 1px;
     border: 1px solid #646cff; 
     padding-left: 10px;
     padding-right: 10px; 
+  }
 
-}
+ 
 .summarized-text-box {
-  border: 1px solid #646cff; /* Border style */
-  border-radius: 4px; /* Border radius */
-  padding: 10px; /* Padding inside the box */
+  border: 1px solid #646cff; 
+  border-radius: 4px; 
+  padding: 10px; 
 }

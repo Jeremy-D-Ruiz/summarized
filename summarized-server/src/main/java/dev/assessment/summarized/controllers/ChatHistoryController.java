@@ -20,9 +20,13 @@ public class ChatHistoryController {
     public ResponseEntity<String> addHistory(@RequestParam("id") String id,
                                              @RequestParam("originalText") String originalText,
                                              @RequestParam("summarizedText") String summarizedText) {
-        chatService.add(id, originalText, summarizedText);
 
-        return ResponseEntity.ok("Added to chat history");
+        if(!originalText.trim().isEmpty()){
+            chatService.add(id, originalText, summarizedText);
+            return ResponseEntity.ok("Added to chat history");
+        }
+        return  ResponseEntity.ok("Please enter a text to save");
+
     }
 
     @GetMapping("/chats/{userId}")

@@ -15,7 +15,6 @@ public class ChatMapper implements RowMapper<Chat> {
         chat.setSummarizedText(resultSet.getString("summarizedText"));
         java.sql.Timestamp timestamp = resultSet.getTimestamp("date");
 
-        // Convert java.sql.Timestamp to LocalDateTime
         if (timestamp != null) {
             chat.setDate(timestamp.toLocalDateTime());
         }

@@ -66,10 +66,7 @@ function SummarizationApp({user, auth}) {
           )}
         </div>
         <div className="text-box-container">
-          <TextBoxComponent
-            value={inputText}
-            onChange={handleInputChange}
-          />
+          <TextBoxComponent value={inputText} onChange={handleInputChange}  />
           <div className="action-buttons">
             <SummarizeButtonComponent
               inputText={inputText}

@@ -41,7 +41,7 @@ function viewHistory({user}){
 
     return (
         <>
-        <div className="button-container" style={{ marginBottom: '20px' }}>
+        <div className="button-container" style={{ marginBottom: '20px' , backgroundColor: 'darkgray', padding: '10px', borderRadius: '5px' }}>
             <Button as={Link} to='/summarized' className="button">Home</Button>
         </div>
                 <div className="row justify-content-start">

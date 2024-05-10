@@ -66,7 +66,6 @@ const AuthGoogleSignUp = ({ auth }) => {
         })
         .catch(error => {
             console.error('Error adding user:', error);
-            // Optionally handle the error here
         });
     }
     

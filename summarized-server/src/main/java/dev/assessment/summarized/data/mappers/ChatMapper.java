@@ -5,6 +5,8 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Stack;
 
 public class ChatMapper implements RowMapper<Chat> {
 
@@ -20,4 +22,6 @@ public class ChatMapper implements RowMapper<Chat> {
         }
         return chat;
     }
+
+
 }
